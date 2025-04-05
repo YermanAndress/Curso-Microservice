@@ -1,13 +1,12 @@
-package com.cursomicroservice.cursomicroservice.delivery.rest;
+package co.edu.uceva.cursomicroservice.delivery.rest;
 
-import com.cursomicroservice.cursomicroservice.domain.exception.CursoNoEncontradoException;
-import com.cursomicroservice.cursomicroservice.domain.exception.NoHayCursosException;
-import com.cursomicroservice.cursomicroservice.domain.exception.PaginaSinCursosException;
-import com.cursomicroservice.cursomicroservice.domain.exception.ValidationException;
-import com.cursomicroservice.cursomicroservice.domain.model.Curso;
-import com.cursomicroservice.cursomicroservice.domain.service.ICursoService;
+import co.edu.uceva.cursomicroservice.domain.exception.CursoNoEncontradoException;
+import co.edu.uceva.cursomicroservice.domain.exception.NoHayCursosException;
+import co.edu.uceva.cursomicroservice.domain.exception.PaginaSinCursosException;
+import co.edu.uceva.cursomicroservice.domain.exception.ValidationException;
+import co.edu.uceva.cursomicroservice.domain.model.Curso;
+import co.edu.uceva.cursomicroservice.domain.service.ICursoService;
 import jakarta.validation.Valid;
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

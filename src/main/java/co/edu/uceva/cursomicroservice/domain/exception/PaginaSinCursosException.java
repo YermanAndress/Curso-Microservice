@@ -1,4 +1,4 @@
-package com.cursomicroservice.cursomicroservice.domain.exception;
+package co.edu.uceva.cursomicroservice.domain.exception;
 
 public class PaginaSinCursosException extends RuntimeException {
     public PaginaSinCursosException(int page) {

@@ -1,5 +1,6 @@
-package com.cursomicroservice.cursomicroservice.delivery.exception;
+package co.edu.uceva.cursomicroservice.delivery.exception;
 
+import co.edu.uceva.cursomicroservice.domain.exception.*;
 import com.cursomicroservice.cursomicroservice.domain.exception.*;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -37,7 +38,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoHayCursosException.class)
     public ResponseEntity<Map<String, Object>> handleNoHayCursos(NoHayCursosException ex) {
         Map<String, Object> response = new HashMap<>();
-        response.put(MENSAJE, "No hay productos en la base de datos.");
+        response.put(MENSAJE, "No hay cursos en la base de datos.");
         response.put(PRODUCTOS, null); // para que sea siempre el mismo campo
         return ResponseEntity.status(HttpStatus.OK).body(response); // 200 pero lista vacía
     }

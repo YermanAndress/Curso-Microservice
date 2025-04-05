@@ -1,4 +1,4 @@
-package com.cursomicroservice.cursomicroservice;
+package co.edu.uceva.cursomicroservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

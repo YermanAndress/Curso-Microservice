@@ -1,4 +1,4 @@
-package com.cursomicroservice.cursomicroservice.domain.exception;
+package co.edu.uceva.cursomicroservice.domain.exception;
 
 public class CursoExistenteException extends RuntimeException {
     public CursoExistenteException(String nombre) {

@@ -1,6 +1,6 @@
-package com.cursomicroservice.cursomicroservice.domain.service;
+package co.edu.uceva.cursomicroservice.domain.service;
 
-import com.cursomicroservice.cursomicroservice.domain.model.Curso;
+import co.edu.uceva.cursomicroservice.domain.model.Curso;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

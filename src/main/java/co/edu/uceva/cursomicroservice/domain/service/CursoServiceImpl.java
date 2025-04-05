@@ -1,7 +1,7 @@
-package com.cursomicroservice.cursomicroservice.domain.service;
+package co.edu.uceva.cursomicroservice.domain.service;
 
-import com.cursomicroservice.cursomicroservice.domain.model.Curso;
-import com.cursomicroservice.cursomicroservice.domain.repository.ICursoRepository;
+import co.edu.uceva.cursomicroservice.domain.model.Curso;
+import co.edu.uceva.cursomicroservice.domain.repository.ICursoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

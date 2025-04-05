@@ -1,4 +1,4 @@
-package com.cursomicroservice.cursomicroservice.domain.exception;
+package co.edu.uceva.cursomicroservice.domain.exception;
 
 public class NoHayCursosException extends RuntimeException {
     public NoHayCursosException() {

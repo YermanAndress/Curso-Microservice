@@ -1,4 +1,4 @@
-package com.cursomicroservice.cursomicroservice;
+package co.edu.uceva.cursomicroservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

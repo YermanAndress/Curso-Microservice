@@ -1,4 +1,4 @@
-package com.cursomicroservice.cursomicroservice.domain.model;
+package co.edu.uceva.cursomicroservice.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -18,45 +18,45 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "El curso debe tener nombre")
+    @NotBlank(message = "El Curso debe tener nombre")
     @Column(nullable = false)
     private String nombre;
 
-    @NotNull(message = "El curso debe tener descripcion")
+    @NotNull(message = "El Curso Debe Tener Descripcion")
     @Column(nullable = false)
     private String descripcion;
 
-    @NotNull(message = "El curso debe estar vinculado a un docente")
+    @NotNull(message = "El Curso Debe Estar Vinculado A Un Docente")
     @Column(nullable = false)
     private long idDocente;
 
-    @NotNull(message = "El curso debe estar vinculado a un semestre")
+    @NotNull(message = "El Curso Debe Estar Vinculado A Un Semestre")
     @Column(nullable = false)
     private long idSemestre;
 
-    @NotBlank(message = "El curso debe tener una modalidad")
+    @NotBlank(message = "El Curso Debe Tener Una Modalidad")
     @Column(nullable = false)
     private String modalidad;
 
-    @NotNull(message = "Debe especificar el numero de creditos")
+    @NotNull(message = "Debe Especificar El Numero De Creditos")
     @Column(nullable = false)
     private Byte numeroCreditos;
 
-    @NotNull(message = "Debe especificar la duracion del curso")
+    @NotNull(message = "Debe Especificar La Duracion Del Curso")
     @Column(nullable = false)
     private Integer duracion;
 
-    @NotNull(message = "Debe especificar el numero de cupos disponibles")
+    @NotNull(message = "Debe Especificar El Numero De Cupos Disponibles")
     @Column(nullable = false)
     private Byte cuposDisponibles;
 
-    @NotNull(message = "Debe ingresar la fecha de creacion del curso")
+    @NotNull(message = "Debe Ingresar La Fecha De Creacion Del Curso")
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate fechaCreacion;
 
-    @NotNull(message = "Debe especificar el horacio del curso")
+    @NotNull(message = "Debe Especificar El Horario Del Curso")
     @Column(nullable = false)
     private String horario;
 
