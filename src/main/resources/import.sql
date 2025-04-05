@@ -1,0 +1,1 @@
+INSERT INTO curso (nombre, descripcion, id_docente, id_semestre, modalidad, numero_creditos, duracion, cupos_disponibles, fecha_creacion, horario, activo) VALUES ('Matemáticas Avanzadas', 'Curso de cálculo diferencial', 1, 1, 'Presencial', 4, 60, 20, '2025-03-08', 'Lunes 14:00-16:00',  true);
