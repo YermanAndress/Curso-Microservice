@@ -1,7 +1,6 @@
 package co.edu.uceva.cursomicroservice.delivery.exception;
 
 import co.edu.uceva.cursomicroservice.domain.exception.*;
-import com.cursomicroservice.cursomicroservice.domain.exception.*;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
