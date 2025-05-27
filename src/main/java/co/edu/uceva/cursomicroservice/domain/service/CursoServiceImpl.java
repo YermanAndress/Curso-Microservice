@@ -2,10 +2,10 @@ package co.edu.uceva.cursomicroservice.domain.service;
 
 import co.edu.uceva.cursomicroservice.domain.model.Curso;
 import co.edu.uceva.cursomicroservice.domain.repository.ICursoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +30,7 @@ public class CursoServiceImpl implements ICursoService{
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Optional<Curso> findById(Long id) {
         return cursoRepository.findById(id);
     }
@@ -42,13 +42,13 @@ public class CursoServiceImpl implements ICursoService{
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public List<Curso> findAll() {
         return cursoRepository.findAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Page<Curso> findAll(Pageable pageable) {
         return cursoRepository.findAll(pageable);
     }
