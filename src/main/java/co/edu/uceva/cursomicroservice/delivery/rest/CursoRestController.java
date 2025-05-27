@@ -36,6 +36,7 @@ public class CursoRestController {
     private static final String MENSAJE = "mensaje";
     private static final String CURSO = "curso";
     private static final String CURSOS = "cursos";
+    private static final String USUARIOS = "usuarios";
 
 
     public CursoRestController(ICursoService cursoService, IUsuarioClient usuarioService, ISemestreClient semestreService) {
