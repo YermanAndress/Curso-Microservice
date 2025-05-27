@@ -2,8 +2,11 @@ package co.edu.uceva.cursomicroservice.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,13 +15,16 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "El Curso debe tener nombre")
+    @NotEmpty(message = "El Curso debe tener nombre")
     @Column(nullable = false)
     private String nombre;
 
@@ -34,7 +40,7 @@ public class Curso {
     @Column(nullable = false)
     private long idSemestre;
 
-    @NotBlank(message = "El Curso Debe Tener Una Modalidad")
+    @NotEmpty(message = "El Curso Debe Tener Una Modalidad")
     @Column(nullable = false)
     private String modalidad;
 

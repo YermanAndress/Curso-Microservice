@@ -1,11 +1,13 @@
 package co.edu.uceva.cursomicroservice.delivery.rest;
 
-import co.edu.uceva.cursomicroservice.domain.exception.CursoNoEncontradoException;
-import co.edu.uceva.cursomicroservice.domain.exception.NoHayCursosException;
-import co.edu.uceva.cursomicroservice.domain.exception.PaginaSinCursosException;
-import co.edu.uceva.cursomicroservice.domain.exception.ValidationException;
+import co.edu.uceva.cursomicroservice.domain.exception.*;
 import co.edu.uceva.cursomicroservice.domain.model.Curso;
+import co.edu.uceva.cursomicroservice.domain.model.UsuarioDTO;
 import co.edu.uceva.cursomicroservice.domain.service.ICursoService;
+import co.edu.uceva.cursomicroservice.domain.service.ISemestreClient;
+import co.edu.uceva.cursomicroservice.domain.service.IUsuarioClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,19 +21,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api/v1/curso-service")
 public class CursoRestController {
 
     private final ICursoService cursoService;
 
+    // Declaramos como final el servicio para mejorar la inmutabilidad
+    private final ICursoService Cursomicroservice;
+    private final IUsuarioClient usuarioService;
+    private final ISemestreClient semestreService;
+
     private static final String MENSAJE = "mensaje";
     private static final String CURSO = "curso";
     private static final String CURSOS = "cursos";
 
 
-    public CursoRestController(ICursoService cursoService) {
+    public CursoRestController(ICursoService cursoService, IUsuarioClient usuarioService, ISemestreClient semestreService) {
         this.cursoService = cursoService;
+        this.usuarioService = usuarioService;
+        this.semestreService = semestreService;
     }
 
     @GetMapping("/cursos")
