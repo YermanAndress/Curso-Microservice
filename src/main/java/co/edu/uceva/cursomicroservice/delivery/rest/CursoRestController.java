@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,10 +27,9 @@ import java.util.Map;
 @RequestMapping("/api/v1/curso-service")
 public class CursoRestController {
 
-    private final ICursoService cursoService;
 
     // Declaramos como final el servicio para mejorar la inmutabilidad
-    private final ICursoService Cursomicroservice;
+    private final ICursoService cursoService;
     private final IUsuarioClient usuarioService;
     private final ISemestreClient semestreService;
 
@@ -54,6 +54,31 @@ public class CursoRestController {
         Map<String, Object> response = new HashMap<>();
         response.put(CURSOS, cursos);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/docentes")
+    public ResponseEntity<Map<String, Object>> getDocentes() {
+        ObjectMapper mapper = new ObjectMapper();
+        //https://stackoverflow.com/questions/28821715/java-lang-classcastexception-java-util-linkedhashmap-cannot-be-cast-to-com-test
+        List<UsuarioDTO> usuarios = mapper.convertValue(usuarioService.getUsuarios().getBody().get(USUARIOS), new TypeReference<List<UsuarioDTO>>(){});
+        List<UsuarioDTO> docentes = new ArrayList<>();
+        Map<String, Object> response = new HashMap<>();
+
+        for(UsuarioDTO usuario : usuarios) {
+            if(usuario.getRol().equals("Coordinador") || usuario.getRol().equals("Docente") || usuario.getRol().equals("Decano")) {
+                docentes.add(usuario);
+            }
+        }
+        if (docentes.isEmpty()) {
+            throw new NoHayDocentesException();
+        }
+        response.put(USUARIOS, docentes);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/semestres")
+    public ResponseEntity<Map<String, Object>> getSemestre() {
+        return semestreService.getSemestre();
     }
 
     @GetMapping("/curso/page/{page}")
