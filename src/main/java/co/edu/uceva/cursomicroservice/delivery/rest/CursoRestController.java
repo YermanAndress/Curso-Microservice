@@ -57,30 +57,6 @@ public class CursoRestController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/docentes")
-    public ResponseEntity<Map<String, Object>> getDocentes() {
-        ObjectMapper mapper = new ObjectMapper();
-        //https://stackoverflow.com/questions/28821715/java-lang-classcastexception-java-util-linkedhashmap-cannot-be-cast-to-com-test
-        List<UsuarioDTO> usuarios = mapper.convertValue(usuarioService.getUsuarios().getBody().get(USUARIOS), new TypeReference<List<UsuarioDTO>>(){});
-        List<UsuarioDTO> docentes = new ArrayList<>();
-        Map<String, Object> response = new HashMap<>();
-
-        for(UsuarioDTO usuario : usuarios) {
-            if(usuario.getRol().equals("Coordinador") || usuario.getRol().equals("Docente") || usuario.getRol().equals("Decano")) {
-                docentes.add(usuario);
-            }
-        }
-        if (docentes.isEmpty()) {
-            throw new NoHayDocentesException();
-        }
-        response.put(USUARIOS, docentes);
-        return ResponseEntity.ok(response);
-    }
-
-    @GetMapping("/semestres")
-    public ResponseEntity<Map<String, Object>> getSemestre() {
-        return semestreService.getSemestre();
-    }
 
     @GetMapping("/curso/page/{page}")
     public ResponseEntity<Object> index(@PathVariable Integer page) {
