@@ -1,7 +1,7 @@
 usuarioservice:
-  url: ${TARGET_HOST_1:http://localhost:8082}
+  url: ${TARGET_HOST_1:http://localhost:8086}
 semestreservice:
-  url: ${TARGET_HOST_2:http://localhost:8084}
+  url: ${TARGET_HOST_2:http://localhost:8081}
 app:
   api:
     version: v1
@@ -39,7 +39,7 @@ server:
   port: ${PORT:8091}
 spring:
   application:
-    name: Facultad-Service
+    name: curso-service
   datasource:
     driver-class-name: org.postgresql.Driver
     hikari:

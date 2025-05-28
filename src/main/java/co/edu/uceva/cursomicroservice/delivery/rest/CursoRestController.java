@@ -2,6 +2,7 @@ package co.edu.uceva.cursomicroservice.delivery.rest;
 
 import co.edu.uceva.cursomicroservice.domain.exception.*;
 import co.edu.uceva.cursomicroservice.domain.model.Curso;
+import co.edu.uceva.cursomicroservice.domain.model.SemestreDTO;
 import co.edu.uceva.cursomicroservice.domain.model.UsuarioDTO;
 import co.edu.uceva.cursomicroservice.domain.service.ICursoService;
 import co.edu.uceva.cursomicroservice.domain.service.ISemestreClient;
@@ -96,6 +97,8 @@ public class CursoRestController {
         if (result.hasErrors()) {
             throw new ValidationException(result);
         }
+        comprobarSemestre(curso.getIdSemestre());
+        comprobarUsuarios(curso.getIdDocente());
         Map<String, Object> response = new HashMap<>();
         Curso nuevoCurso = cursoService.save(curso);
         response.put(MENSAJE, "El curso ha sido creado con éxito!");
@@ -119,6 +122,8 @@ public class CursoRestController {
         if (result.hasErrors()) {
             throw new ValidationException(result);
         }
+        comprobarSemestre(curso.getIdSemestre());
+        comprobarUsuarios(curso.getIdDocente());
         cursoService.findById(curso.getId())
                 .orElseThrow(() -> new CursoNoEncontradoException(curso.getId()));
         Map<String, Object> response = new HashMap<>();
@@ -137,5 +142,25 @@ public class CursoRestController {
         response.put(MENSAJE, "El curso ha sido encontrado con éxito!");
         response.put(CURSO, curso);
         return ResponseEntity.ok(response);
+    }
+
+    public void comprobarSemestre(long idSemestre) {
+        Map<String, List<SemestreDTO>> response = semestreService.idSemestre();
+        List<SemestreDTO> semestres = response.get("semestres");
+        boolean existe = semestres.stream()
+                .anyMatch(semestre -> semestre.getId() == idSemestre);
+        if (!existe) {
+            throw new RuntimeException(("El semestre con ID " + idSemestre + " no existe"));
+        }
+    }
+
+    public void comprobarUsuarios(long idDocente) {
+        Map<String, List<UsuarioDTO>> response = usuarioService.idDocente();
+        List<UsuarioDTO> usuarios = response.get("usuarios");
+        boolean existe = usuarios.stream()
+                .anyMatch(usuario -> usuario.getId() == idDocente);
+        if (!existe) {
+            throw new RuntimeException(("El usuario con ID " + idDocente + " no existe"));
+        }
     }
 }
