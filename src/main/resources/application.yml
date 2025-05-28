@@ -1,0 +1,65 @@
+usuarioservice:
+  url: ${TARGET_HOST_1:http://localhost:8082}
+semestreservice:
+  url: ${TARGET_HOST_2:http://localhost:8084}
+app:
+  api:
+    version: v1
+  version: 0.14.1
+eureka:
+  client:
+    fetch-registry: true
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+  instance:
+    prefer-ip-address: true
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: ERROR
+    org:
+      hibernate:
+        nodeValue: ERROR
+        SQL: DEBUG
+        springframework: ERROR
+    root: ERROR
+    web: INFO
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  server:
+    port: ${ACTUATOR_PORT:8090}
+server:
+  port: ${PORT:8091}
+spring:
+  application:
+    name: Facultad-Service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: '30000'
+      idle-timeout: '600000'
+      keepalive-time: '300000'
+      max-lifetime: '1800000'
+      maximum-pool-size: '50'
+      minimum-idle: '10'
+      validation-timeout: '5000'
+    password: ${DB_PASS:a1b2c3d4}
+    url: ${DB_HOST:jdbc:postgresql://localhost:5432/curso_springboot}
+    username: ${DB_USER:devdb}
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL:create-drop}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  main:
+    allow-circular-references: true
