@@ -4,25 +4,25 @@ services:
     container_name: curso-service
     restart: unless-stopped
     depends_on:
-      - db
+      - db4
     ports:
       - "8090:8090"
       - "8091:8091"
     environment:
-      - DB_USER=userdb
-      - DB_PASS=passdb
-      - JPA_DDL=create-drop
-      - DB_HOST=jdbc:postgresql://db:5432/curso_springboot
-      - EUREKA_HOST=eurekaserver
-      - EUREKA_PORT=8761
-      - PORT=8080
-      - ACTUATOR_PORT=8081
+      DB_USER: userdb
+      DB_PASS: passdb
+      JPA_DDL: create-drop
+      DB_HOST: jdbc:postgresql://db4:5432/curso_springboot
+      EUREKA_HOST: eurekaserver
+      EUREKA_PORT: 8761
+      PORT: 8090
+      ACTUATOR_PORT: 8091
     networks:
       - mynetwork
 
-  db:
+  db4:
     image: postgres:latest
-    container_name: db
+    container_name: db4
     restart: unless-stopped
     ports:
       - "5432:5432"
