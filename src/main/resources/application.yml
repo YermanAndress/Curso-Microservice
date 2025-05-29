@@ -13,7 +13,7 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     register-with-eureka: true
     service-url:
-      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+      defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
 logging:
@@ -34,9 +34,9 @@ management:
       exposure:
         include: '*'
   server:
-    port: ${ACTUATOR_PORT:8090}
+    port: '8090'
 server:
-  port: ${PORT:8091}
+  port: '8091'
 spring:
   application:
     name: curso-service
